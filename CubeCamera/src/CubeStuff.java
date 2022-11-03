@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.*;
@@ -7,6 +8,7 @@ import java.awt.*;
 
 public class CubeStuff extends JFrame implements KeyListener
 {
+
 	private DrawArea drawArea;
 	private JPanel canvas;
 	// private int cameraDist;
@@ -14,13 +16,13 @@ public class CubeStuff extends JFrame implements KeyListener
 	private int[][][] XYcoords;
 	// [Quads][Points][Coords]
 	private int[][][] cube = {
-								{{-1, 1, 1}, {-1, -1, 1}, {-1, -1, -1}, {-1, 1,-1}},
-								{{1, 1, 1}, {-1, 1, 1}, {-1, 1, -1}, {1, 1, -1}},
-								{{1, -1, 1}, {-1, -1, 1}, {-1, -1, -1}, {1, -1, -1}},
-								{{1, 1, 1}, {-1, 1, 1}, {-1, -1, 1}, {1, -1,1}},
-								{{1, 1, -1}, {-1, 1, -1}, {-1, -1, -1}, {1, -1, -1}},
-								{{1, 1, 1}, {1, -1, 1}, {1, -1, -1}, {1, 1,-1}},					
-							 };
+		{{-1, 1, 1}, {-1, -1, 1}, {-1, -1, -1}, {-1, 1,-1}},
+		{{1, 1, 1}, {-1, 1, 1}, {-1, 1, -1}, {1, 1, -1}},
+		{{1, -1, 1}, {-1, -1, 1}, {-1, -1, -1}, {1, -1, -1}},
+		{{1, 1, 1}, {-1, 1, 1}, {-1, -1, 1}, {1, -1,1}},
+		{{1, 1, -1}, {-1, 1, -1}, {-1, -1, -1}, {1, -1, -1}},
+		{{1, 1, 1}, {1, -1, 1}, {1, -1, -1}, {1, 1,-1}},					
+	};
 	private int[] center;
 	private Vector cameraPos;
 	private Vector cameraDir;
@@ -55,65 +57,65 @@ public class CubeStuff extends JFrame implements KeyListener
 	
 	private void copyTo(int side) {
 		for(int i = 0; i < coords.length; i++) {
-				for(int j = 0; j < coords[i].length; j++) {
-					coords[i][j] = new Vector(side * cube[i][j][0],side * cube[i][j][1], side * cube[i][j][2]);
-				}
+			for(int j = 0; j < coords[i].length; j++) {
+				coords[i][j] = new Vector(side * cube[i][j][0],side * cube[i][j][1], side * cube[i][j][2]);
+			}
 		}
 	}
 	
 	public void keyPressed(KeyEvent e)
 	{
-			if (e.getKeyCode() == KeyEvent.VK_W)
-			{
-				forwardMove(5);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_S)
-			{
-				forwardMove(-5);
-				//System.out.println(cameraPos.abs());
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_D)
-			{
-				sideMove(-5);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_A)
-			{
-				sideMove(5);
-			}
-			/*
-			else if (e.getKeyCode() == KeyEvent.VK_W)
-			{
-				zMove(2);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_S)
-			{
-				zMove(-2);
-			}*/
-			else if (e.getKeyCode() == KeyEvent.VK_UP) {
-				vertCam(5);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				vertCam(-5);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				horizCam(5);
-			}
-			else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				horizCam(-5);
-			}
-			right = cameraDir.cross(up);
-			repaint();
+		if (e.getKeyCode() == KeyEvent.VK_W)
+		{
+			forwardMove(5);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_S)
+		{
+			forwardMove(-5);
+			//System.out.println(cameraPos.abs());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_D)
+		{
+			sideMove(-5);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_A)
+		{
+			sideMove(5);
+		}
+		/*
+		else if (e.getKeyCode() == KeyEvent.VK_W)
+		{
+			zMove(2);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_S)
+		{
+			zMove(-2);
+		}*/
+		else if (e.getKeyCode() == KeyEvent.VK_UP) {
+			vertCam(5);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			vertCam(-5);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			horizCam(5);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			horizCam(-5);
+		}
+		
+		right = cameraDir.cross(up);
+		repaint();
+
 	}	
-	public void keyReleased(KeyEvent e)
-	{
-	}	
-	public void keyTyped(KeyEvent e)
-	{
-	}
+
+	public void keyReleased(KeyEvent e) {}	
+	public void keyTyped(KeyEvent e) {}
 	
 	// private void zMove(int dist) {
 	// 	cameraPos = cameraPos.add(new Vector(0, 0, dist));
 	// }
+
 	private void sideMove(int dist) {
 		Vector change = cameraDir.add(new Vector(0, 0, -cameraDir.z())).cross(up).normalize().scale(dist);
 		cameraPos = cameraPos.add(change);

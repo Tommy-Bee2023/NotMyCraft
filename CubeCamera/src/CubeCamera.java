@@ -1,3 +1,4 @@
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -11,7 +12,6 @@ public class CubeCamera
 {
 	public static void main(String args[])
 	{
-		
 		CubeStuff game = new CubeStuff(Integer.parseInt(JOptionPane.showInputDialog("Side Length")));
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setTitle("Square");
