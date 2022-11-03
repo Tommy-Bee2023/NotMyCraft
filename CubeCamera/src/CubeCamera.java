@@ -16,6 +16,6 @@ public class CubeCamera
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setTitle("Square");
 		game.pack();
-		game.show();	
+		// game.show();
 	}
 }

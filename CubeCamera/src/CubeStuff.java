@@ -9,7 +9,7 @@ public class CubeStuff extends JFrame implements KeyListener
 {
 	private DrawArea drawArea;
 	private JPanel canvas;
-	private int cameraDist;
+	// private int cameraDist;
 	private Vector[][] coords;
 	private int[][][] XYcoords;
 	// [Quads][Points][Coords]
@@ -111,9 +111,9 @@ public class CubeStuff extends JFrame implements KeyListener
 	{
 	}
 	
-	private void zMove(int dist) {
-		cameraPos = cameraPos.add(new Vector(0, 0, dist));
-	}
+	// private void zMove(int dist) {
+	// 	cameraPos = cameraPos.add(new Vector(0, 0, dist));
+	// }
 	private void sideMove(int dist) {
 		Vector change = cameraDir.add(new Vector(0, 0, -cameraDir.z())).cross(up).normalize().scale(dist);
 		cameraPos = cameraPos.add(change);
@@ -154,17 +154,17 @@ public class CubeStuff extends JFrame implements KeyListener
 		}
 	}
 	
-	private void calcGround(Graphics graphics) {
-		CameraPlane plane = new CameraPlane(cameraPos, cameraDir, right, 5*cameraPos.abs());
-		for(int i = -1000; i < 1000; i++) {
-				Line start = new Line(new Vector(5*i, -1000, 0), cameraPos);
-				Line end = new Line(new Vector(5*i, 1000, 0), cameraPos);
-				int[] startPoint = plane.getCoords(plane.intersect(start));
-				int[] endPoint = plane.getCoords(plane.intersect(end));
-				graphics.drawLine(startPoint[0], startPoint[1], endPoint[0],  endPoint[1]);
+	// private void calcGround(Graphics graphics) {
+	// 	CameraPlane plane = new CameraPlane(cameraPos, cameraDir, right, 5*cameraPos.abs());
+	// 	for(int i = -1000; i < 1000; i++) {
+	// 			Line start = new Line(new Vector(5*i, -1000, 0), cameraPos);
+	// 			Line end = new Line(new Vector(5*i, 1000, 0), cameraPos);
+	// 			int[] startPoint = plane.getCoords(plane.intersect(start));
+	// 			int[] endPoint = plane.getCoords(plane.intersect(end));
+	// 			graphics.drawLine(startPoint[0], startPoint[1], endPoint[0],  endPoint[1]);
 				
-			}
-	}
+	// 		}
+	// }
 	
 	private void sortXY() {
 		for(int i = 0; i < coords.length; i++) {
@@ -199,9 +199,9 @@ public class CubeStuff extends JFrame implements KeyListener
 		return x;
 	}
 	
-	private int rand() {
-		return (int)(Math.random() * 256);
-	}
+	// private int rand() {
+	// 	return (int)(Math.random() * 256);
+	// }
 	
 	private Color genColor(int i) {
 		int a = limit(i-100);	
@@ -244,15 +244,15 @@ public class CubeStuff extends JFrame implements KeyListener
 		arr[j] = temp;
 	}
 	
-	private void print(int[][] arr) {
-		for(int i = 0; i < arr.length; i++) {
-			for(int j = 0; j < arr[i].length; j++) {
-				System.out.print(arr[i][j] + " ");
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
+	// private void print(int[][] arr) {
+	// 	for(int i = 0; i < arr.length; i++) {
+	// 		for(int j = 0; j < arr[i].length; j++) {
+	// 			System.out.print(arr[i][j] + " ");
+	// 		}
+	// 		System.out.println();
+	// 	}
+	// 	System.out.println();
+	// }
 	
 	public class DrawArea extends JPanel{
 		public DrawArea(){	
