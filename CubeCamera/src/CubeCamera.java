@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-//TODO
+// TODO
 // Make camera move like minecraft
 // Make wireframe ground
 // Clean up code into more objects
