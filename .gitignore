@@ -1,2 +1,8 @@
+# Java artifacts
+*.class
+
+# Eclipse/Intellij Configs
 /.metadata/
+
+# Bazel artifacts
 bazel-*
